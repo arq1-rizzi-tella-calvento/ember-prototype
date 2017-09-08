@@ -1,5 +1,16 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
+<div class="container page-centered">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">¡Bienvenido, estudiante!</h1>
+      <p class="lead">
+        Para iniciar la encuestra de pre-inscripripción, siga las instrucciones que se iran detallando.
+      </p>
+      <div class="row">
+        <div class="col-lg-3">
+          {{link-to 'Todas las materias' 'materias' class='btn btn-info'}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {{outlet}}

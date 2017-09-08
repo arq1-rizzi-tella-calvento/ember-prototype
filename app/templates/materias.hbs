@@ -1,0 +1,18 @@
+{{outlet}}
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Lista de materias
+      <span class="pull-right">
+        {{link-to 'Ocultar' 'index' }}
+      </span>
+    </div>
+    <ul class="list-group">
+      {{#each model as |materia|}}
+        <li class="list-group-item">
+          {{materia.name}} - Horarios: {{materia.class_schedule}} - Dias: {{materia.days}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
