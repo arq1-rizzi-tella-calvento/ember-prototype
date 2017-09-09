@@ -1,18 +1,32 @@
 {{outlet}}
-<div class="container">
+<div id="materias" class="container" style="padding-bottom: 25px;">
   <div class="panel panel-default">
-    <div class="panel-heading">
-      Lista de materias
-      <span class="pull-right">
-        {{link-to 'Ocultar' 'index' }}
-      </span>
+    <div class="panel-body">
+      <div class="panel-heading text-center">
+        <span>Lista de materias</span>
+        <span class="pull-right">
+          {{link-to 'Ocultar' 'index' }}
+        </span>
+      </div>
+      <div class="col-md-12">
+        {{#each model as |materia|}}
+          <div class="col-md-12 form-group">
+            <div class="col-md-4">{{materia.name}} </div>
+            <div class="col-md-6">
+              <select class="form-control" id="{{materia.name}}">
+                <option value="NoCursa" selected> Todavia no voy a cursar</option>
+                <option value="Aprobada"> Ya aprob&eacute;</option>
+                {{#each materia.commission as |commission|}}
+                  <option value="{{commission.name}}">{{commission.name}} : Horarios: {{commission.class_schedule}} - Dias: {{commission.days}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="col-md-12">
+            <button class="btn btn-success pull-right" type="button" {{action "confirmarIncripcion"}}>Confirmar</button>
+      </div>
     </div>
-    <ul class="list-group">
-      {{#each model as |materia|}}
-        <li class="list-group-item">
-          {{materia.name}} - Horarios: {{materia.class_schedule}} - Dias: {{materia.days}}
-        </li>
-      {{/each}}
-    </ul>
   </div>
 </div>
