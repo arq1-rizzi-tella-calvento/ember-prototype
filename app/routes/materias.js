@@ -1,8 +1,11 @@
 import Ember from 'ember';
+import Config from 'ember-prototype/config/environment';
+
+const host = Config.APP.BACKEND_URL;
 
 export default Ember.Route.extend({
   model() { 
-    return $.get('http://localhost:3000/surveys/new').then(questions => {
+    return $.get(`${host}/surveys/new`).then(questions => {
       questions.forEach(question => question.answer = 'Todavia no voy a cursar');
       return questions
     })
@@ -14,7 +17,7 @@ export default Ember.Route.extend({
       })
 
       $.post(
-        'http://localhost:3000/surveys', JSON.stringify(answers)
+        `${host}/surveys`, JSON.stringify(answers)
       ).then(() => alert('Encuesta enviada'))
     }
   }
